@@ -4,32 +4,125 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anonymous Chat</title>
+  <title>Secret Chat - Hawkins Student Connect</title>
   <link rel="stylesheet" href="/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Benguiat&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/" class="logo" style="text-decoration: none; color: inherit;">
+        <span class="logo-text flicker">HAWKINS</span>
+        <span class="logo-subtitle">Student Connect</span>
+      </a>
+      <ul class="nav-menu">
+        <li><a href="/">Home</a></li>
+        <li><a href="/community.html">Community</a></li>
+        <li><a href="/chat.html" class="active">Chat</a></li>
+        <li><a href="/music.html?reflect=1">Reflect</a></li>
+        <li><a href="/profile.html">Profile</a></li>
+        <li><a href="/login.html" class="btn-neon">Login</a></li>
+      </ul>
+    </div>
+  </nav>
+
   <div id="app">
-    <header>
-      <h1>Anonymous Chat</h1>
-      <div id="status">Connecting...</div>
-      <div id="user-info"></div>
-    </header>
-    <main>
-      <div id="chat-window"></div>
-      <div id="typing-indicator" style="display:none;">Stranger is typing...</div>
-      <form id="chat-form" autocomplete="off">
-        <input id="message-input" type="text" placeholder="Type a message..." maxlength="500" required />
-        <button type="submit">Send</button>
-        <button type="button" id="report-btn">Report</button>
-        <button type="button" id="block-btn">Block</button>
-      </form>
-    </main>
-    <footer>
-      <span id="online-count">Online: 0</span>
-      <button id="dark-mode-toggle">Dark Mode</button>
-    </footer>
+    <div class="chat-container">
+      <header class="chat-header">
+        <div class="header-content">
+          <h1 class="chat-title">Secret Chat</h1>
+          <p class="chat-subtitle">Anonymous, Encrypted & Safe</p>
+          <div id="status" class="status-indicator">Connecting...</div>
+        </div>
+        <div id="user-info" class="user-info-badge"></div>
+      </header>
+
+      <main class="chat-main">
+        <div id="chat-window" class="chat-window"></div>
+        <div id="typing-indicator" class="typing-indicator" style="display:none;">
+          <span></span><span></span><span></span> Stranger is typing...
+        </div>
+        
+        <form id="chat-form" class="chat-form" autocomplete="off">
+          <div class="input-wrapper">
+            <input 
+              id="message-input" 
+              type="text" 
+              class="message-input"
+              placeholder="Type your message... (Max 500 characters)" 
+              maxlength="500" 
+              required 
+            />
+            <button type="submit" class="btn-primary pulse">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 2L11 13m11-11l-7 20-4-9-9-4 20-7z"></path>
+              </svg>
+              Send
+            </button>
+          </div>
+          <div class="action-buttons">
+            <button type="button" id="report-btn" class="btn-action btn-report" title="Report this user">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/>
+              </svg>
+              Report
+            </button>
+            <button type="button" id="block-btn" class="btn-action btn-block" title="Block this user">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm4-9H8v2h8v-2z"/>
+              </svg>
+              Block
+            </button>
+            <button type="button" id="dark-mode-toggle" class="btn-action btn-theme" title="Toggle dark mode">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+              </svg>
+            </button>
+          </div>
+        </form>
+
+        <footer class="chat-footer">
+          <span id="online-count" class="online-count">🟢 Online: 0 users</span>
+        </footer>
+      </main>
+    </div>
   </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Hawkins Initiative</h3>
+          <p>Fighting mental health battles together, one student at a time.</p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/community.html">Community</a></li>
+            <li><a href="/chat.html">Chat</a></li>
+            <li><a href="/music.html?reflect=1">Reflect</a></li>
+            <li><a href="/profile.html">Profile</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Emergency</h3>
+          <p>Crisis Hotline: 988</p>
+          <p>Text "HELLO" to 741741</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Hawkins Student Connect. You're not alone in this fight.</p>
+      </div>
+    </div>
+  </footer>
+
   <script src="/socket.io/socket.io.js"></script>
   <script src="/main.js"></script>
+
 </body>
 </html>
