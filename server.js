@@ -7,30 +7,6 @@ const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const xss = require('xss');
 const { v4: uuidv4 } = require('uuid');
-const axios = require('axios');
-// Perspective API config
-const PERSPECTIVE_API_KEY = process.env.PERSPECTIVE_API_KEY || '';
-const PERSPECTIVE_API_URL = 'https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key=' + PERSPECTIVE_API_KEY;
-
-async function isAbusive(text) {
-  if (!PERSPECTIVE_API_KEY) return false; // If no key, skip detection
-  try {
-    const response = await axios.post(PERSPECTIVE_API_URL, {
-      comment: { text },
-      languages: ['en'],
-      requestedAttributes: { TOXICITY: {}, INSULT: {}, THREAT: {} },
-    });
-    const scores = response.data.attributeScores;
-    // Thresholds can be tuned as needed
-    const toxic = scores.TOXICITY.summaryScore.value > 0.8;
-    const insult = scores.INSULT.summaryScore.value > 0.8;
-    const threat = scores.THREAT.summaryScore.value > 0.7;
-    return toxic || insult || threat;
-  } catch (e) {
-    // On error, allow message (fail open)
-    return false;
-  }
-}
 
 const app = express();
 const server = http.createServer(app);
@@ -88,14 +64,9 @@ io.on('connection', socket => {
   pairUsers();
 
 
-  socket.on('message', async msg => {
+  socket.on('message', msg => {
     // XSS sanitize
     msg = xss(msg.toString().slice(0, 500));
-    // Abuse detection
-    if (await isAbusive(msg)) {
-      socket.emit('abuse_detected', 'Your message was blocked for abusive content.');
-      return;
-    }
     const session = sessions.get(socket.id);
     if (!session || !session.pairedWith) return;
     const peer = io.sockets.sockets.get(session.pairedWith);
