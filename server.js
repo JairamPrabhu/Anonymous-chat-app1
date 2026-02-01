@@ -9,7 +9,6 @@ const xss = require('xss');
 const { v4: uuidv4 } = require('uuid');
 
 const app = express();
-app.set('trust proxy', 1); // Trust first proxy for correct IP handling
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: { origin: '*' },
