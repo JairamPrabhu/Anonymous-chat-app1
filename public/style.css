@@ -109,6 +109,11 @@ a:hover {
   letter-spacing: 0.15em;
 }
 
+body.dark .chat-title {
+  color: #fff !important;
+  text-shadow: none !important;
+}
+
 .chat-subtitle {
   color: var(--neon-blue);
   font-size: 0.9rem;
