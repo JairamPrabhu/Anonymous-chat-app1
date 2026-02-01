@@ -1,21 +1,9 @@
 @import url("/styles.css");
 
 /* =============================
-   COLOR VARIABLES FOR THEMES
+   COLOR VARIABLES FOR DARK THEME ONLY
    ============================= */
 :root {
-  --bg-primary: #f4f4f4;
-  --bg-secondary: #fff;
-  --bg-card: #fff;
-  --text-primary: #181818;
-  --text-secondary: #555;
-  --neon-red: #ff0040;
-  --neon-blue: #00d4ff;
-  --neon-green: #39ff14;
-  --neon-yellow: #ffea00;
-  --glow-red: 0 0 8px #ff0040, 0 0 16px #ff0040;
-}
-body.dark {
   --bg-primary: #181818;
   --bg-secondary: #232323;
   --bg-card: #232323;
