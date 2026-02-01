@@ -91,10 +91,11 @@ a:hover {
 .chat-title {
   font-family: 'Benguiat', serif;
   font-size: 2.2rem;
-  color: var(--neon-red);
-  text-shadow: 0 0 15px var(--neon-red);
+  color: #fff !important;
+  text-shadow: none !important;
   margin: 0 0 0.5rem 0;
   letter-spacing: 0.15em;
+  font-weight: 700;
 }
 
 body.dark .chat-title {
@@ -334,33 +335,34 @@ body.dark .chat-title {
   color: var(--text-secondary);
 }
 
+.btn-primary,
 .btn-send {
-  padding: 0.9rem 1.5rem;
-  background: linear-gradient(135deg, var(--neon-red) 0%, #d0003a 100%);
-  color: white;
+  background: linear-gradient(90deg, #00d4ff 0%, #ff0040 100%);
+  color: #fff;
   border: none;
-  border-radius: 6px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.9rem 2rem;
+  box-shadow: 0 4px 16px rgba(0,212,255,0.15), 0 2px 8px rgba(255,0,64,0.10);
+  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 0.5rem;
-  font-size: 0.9rem;
-  white-space: nowrap;
-  box-shadow: 0 4px 12px rgba(255, 0, 64, 0.3);
+  cursor: pointer;
+  letter-spacing: 0.05em;
 }
 
+.btn-primary:hover,
 .btn-send:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 0, 64, 0.5);
+  background: linear-gradient(90deg, #ff0040 0%, #00d4ff 100%);
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 8px 32px rgba(0,212,255,0.25), 0 4px 16px rgba(255,0,64,0.18);
 }
 
+.btn-primary:active,
 .btn-send:active {
-  transform: translateY(0);
+  transform: scale(0.98);
 }
 
 .action-buttons {
