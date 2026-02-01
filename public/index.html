@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anonymous Chat</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>Anonymous Chat</h1>
+      <div id="status">Connecting...</div>
+      <div id="user-info"></div>
+    </header>
+    <main>
+      <div id="chat-window"></div>
+      <div id="typing-indicator" style="display:none;">Stranger is typing...</div>
+      <form id="chat-form" autocomplete="off">
+        <input id="message-input" type="text" placeholder="Type a message..." maxlength="500" required />
+        <button type="submit">Send</button>
+        <button type="button" id="report-btn">Report</button>
+        <button type="button" id="block-btn">Block</button>
+      </form>
+    </main>
+    <footer>
+      <span id="online-count">Online: 0</span>
+      <button id="dark-mode-toggle">Dark Mode</button>
+    </footer>
+  </div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/main.js"></script>
+</body>
+</html>
